@@ -48,11 +48,7 @@ public class PreLoadLinearLayoutManager extends LinearLayoutManager {
     public void collectAdjacentPrefetchPositions(int dx, int dy, RecyclerView.State state,
                                                  LayoutPrefetchRegistry layoutPrefetchRegistry) {
         super.collectAdjacentPrefetchPositions(dx, dy, state, layoutPrefetchRegistry);
-
-//        final int pos = mLayoutState.mCurrentPosition;
-//        if (pos >= 0 && pos < state.getItemCount()) {
-//            layoutPrefetchRegistry.addPosition(pos, Math.max(0, mLayoutState.mScrollingOffset));
-//        }
+        
         // We can not access mLayoutState, so we have to get info by ourselves.
         // See LinearLayoutManager#updateLayoutState
         int delta = (getOrientation() == HORIZONTAL) ? dx : dy;
