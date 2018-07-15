@@ -5167,7 +5167,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
         public ViewHolder getRecycledView(int viewType) {
             final ScrapData scrapData = mScrap.get(viewType);
             if (viewType == 0 && scrapData != null && scrapData.mScrapHeap != null) {
-                Log.d("RecyclerView", "getRecycledView scrapHeapSize: " + scrapData.mScrapHeap.size());
+//                Log.d("RecyclerView", "getRecycledView scrapHeapSize: " + scrapData.mScrapHeap.size());
             }
             if (scrapData != null && !scrapData.mScrapHeap.isEmpty()) {
                 final ArrayList<ViewHolder> scrapHeap = scrapData.mScrapHeap;
@@ -5191,7 +5191,7 @@ public class RecyclerView extends ViewGroup implements ScrollingView, NestedScro
             final int viewType = scrap.getItemViewType();
             final ArrayList<ViewHolder> scrapHeap = getScrapDataForType(viewType).mScrapHeap;
             if (viewType == 0 && scrapHeap != null) {
-                Log.d("RecyclerView", "putRecycledView scrapHeapSize: " + scrapHeap.size());
+//                Log.d("RecyclerView", "putRecycledView scrapHeapSize: " + scrapHeap.size());
             }
             if (mScrap.get(viewType).mMaxScrap <= scrapHeap.size()) {
                 return;

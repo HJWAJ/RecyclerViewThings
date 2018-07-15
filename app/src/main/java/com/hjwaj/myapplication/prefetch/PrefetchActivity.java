@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.hjwaj.myapplication.R;
 
 /**
- * 通过设置setItemPrefetchEnabled、setInitialPrefetchItemCount、Thread.sleep(DELAY)
+ * 通过设置setItemPrefetchEnabled、Thread.sleep(DELAY)
  * 开启GPU呈现模式分析，对比观察性能
  */
 public class PrefetchActivity extends Activity {
@@ -25,9 +25,9 @@ public class PrefetchActivity extends Activity {
         super.onCreate(b);
         setContentView(R.layout.activity_prefetch);
         RecyclerView rv = findViewById(R.id.rv);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
+        PreLoadLinearLayoutManager llm = new PreLoadLinearLayoutManager(this);
+        llm.setAdjacentPrefetchItemCount(5);
 //        llm.setItemPrefetchEnabled(false);
-//        llm.setInitialPrefetchItemCount(4);
         rv.setLayoutManager(llm);
         rv.setAdapter(new RecyclerView.Adapter() {
             private int count = 11;
