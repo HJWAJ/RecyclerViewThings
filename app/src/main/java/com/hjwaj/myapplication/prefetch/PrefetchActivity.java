@@ -1,4 +1,4 @@
-package com.hjwaj.myapplication;
+package com.hjwaj.myapplication.prefetch;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,17 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+import com.hjwaj.myapplication.R;
 
+/**
+ * 通过设置setItemPrefetchEnabled、setInitialPrefetchItemCount、Thread.sleep(DELAY)
+ * 开启GPU呈现模式分析，对比观察性能
+ */
+public class PrefetchActivity extends Activity {
     private static final int DELAY = 64;
 
     @Override
     public void onCreate(Bundle b) {
         super.onCreate(b);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_prefetch);
         RecyclerView rv = findViewById(R.id.rv);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setItemPrefetchEnabled(false);
+//        llm.setItemPrefetchEnabled(false);
+//        llm.setInitialPrefetchItemCount(4);
         rv.setLayoutManager(llm);
         rv.setAdapter(new RecyclerView.Adapter() {
             private int count = 11;
@@ -35,12 +41,10 @@ public class MainActivity extends Activity {
                 tv.setGravity(Gravity.CENTER);
                 tv.setTextColor(0xff111111);
                 tv.setBackgroundColor(0xffffffff);
-//                if (viewType == 0) {
-//                    try {
-//                        Thread.sleep(DELAY);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+//                try {
+//                    Thread.sleep(DELAY);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
 //                }
                 return new VH(tv);
             }
