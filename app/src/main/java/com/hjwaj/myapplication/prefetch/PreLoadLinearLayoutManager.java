@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 public class PreLoadLinearLayoutManager extends LinearLayoutManager {
@@ -52,7 +51,6 @@ public class PreLoadLinearLayoutManager extends LinearLayoutManager {
         // We can not access mLayoutState, so we have to get info by ourselves.
         // See LinearLayoutManager#updateLayoutState
         int delta = (getOrientation() == HORIZONTAL) ? dx : dy;
-        Log.d("RecyclerView Prefetch", "delta: " + delta);
         if (getChildCount() == 0 || delta == 0) {
             // can't support this scroll, so don't bother prefetching
             return;
