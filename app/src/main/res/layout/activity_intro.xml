@@ -16,7 +16,7 @@
             android:id="@+id/btn_prefetch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ListView测试"
+            android:text="Prefetch"
             android:textSize="18sp"/>
     </LinearLayout>
 </ScrollView>

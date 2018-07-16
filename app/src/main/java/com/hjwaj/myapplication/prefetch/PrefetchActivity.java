@@ -25,6 +25,7 @@ public class PrefetchActivity extends Activity {
         super.onCreate(b);
         setContentView(R.layout.activity_prefetch);
         RecyclerView rv = findViewById(R.id.rv);
+//        LinearLayoutManager llm = new LinearLayoutManager(this);
         PreLoadLinearLayoutManager llm = new PreLoadLinearLayoutManager(this);
         llm.setAdjacentPrefetchItemCount(5);
 //        llm.setItemPrefetchEnabled(false);
@@ -34,7 +35,7 @@ public class PrefetchActivity extends Activity {
 
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                Log.d("RecyclerView", "onCreateViewHolder " + viewType);
+//                Log.d("RecyclerView", "onCreateViewHolder " + viewType);
                 TextView tv = new TextView(parent.getContext());
                 tv.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 360));
                 tv.setTextSize(20);
