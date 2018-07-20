@@ -36,11 +36,11 @@ public class PreloadLinearLayoutManager extends LinearLayoutManager {
         mOrientationHelper = OrientationHelper.createOrientationHelper(this, getOrientation());
     }
 
-    public void setAdjacentPrefetchItemCount(int adjacentPrefetchItemCount) {
-        if (adjacentPrefetchItemCount < 1) {
+    public void setPreloadItemCount(int preloadItemCount) {
+        if (preloadItemCount < 1) {
             throw new IllegalArgumentException("adjacentPrefetchItemCount must not smaller than 1!");
         }
-        mAdditionalAdjacentPrefetchItemCount = adjacentPrefetchItemCount - 1;
+        mAdditionalAdjacentPrefetchItemCount = preloadItemCount - 1;
     }
 
     @Override

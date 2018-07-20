@@ -28,7 +28,7 @@ public class LinearPrefetchActivity extends Activity {
         RecyclerView rv = findViewById(R.id.rv);
 //        LinearLayoutManager llm = new LinearLayoutManager(this);
         PreloadLinearLayoutManager llm = new PreloadLinearLayoutManager(this);
-        llm.setAdjacentPrefetchItemCount(5);
+        llm.setPreloadItemCount(5);
 //        llm.setItemPrefetchEnabled(false);
         rv.setLayoutManager(llm);
         rv.setAdapter(new RecyclerView.Adapter() {
