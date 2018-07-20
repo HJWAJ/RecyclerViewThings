@@ -24,7 +24,7 @@ public class InitialPrefetchActivity extends Activity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rv.setLayoutManager(llm);
         /* This adapter makes all item simple TextView's, except item 10 is a nested RecyclerView
-         * with LinearLayoutManager and item 15 is a nested RecyclerView with StaggeredGridLayoutManager
+         * with LinearLayoutManager and item 16 is a nested RecyclerView with StaggeredGridLayoutManager
          */
         rv.setAdapter(new RecyclerView.Adapter() {
 
@@ -48,7 +48,7 @@ public class InitialPrefetchActivity extends Activity {
                         }
                         if (viewType == 2) {
                             /* StaggeredGridLayoutManager doesn't implement collectInitialPrefetchPositions,
-                             * so we can't see nested item binding when prefetching item 15.
+                             * so we can't see nested item binding when prefetching item 16.
                              */
 //                            recyclerView.setLayoutManager(new StaggeredGridLayoutManager(
 //                                    2, StaggeredGridLayoutManager.VERTICAL));
@@ -73,6 +73,7 @@ public class InitialPrefetchActivity extends Activity {
                 int viewType = getItemViewType(position);
                 switch (viewType) {
                     case 0:
+                        holder.itemView.setBackgroundColor((position & 1) == 0 ? 0xffffffff : 0xffeeeeee);
                         ((TextView) holder.itemView).setText("" + position);
                         break;
                     case 1:
@@ -94,7 +95,7 @@ public class InitialPrefetchActivity extends Activity {
                 if (position == 10) { // rv with llm
                     return 1;
                 }
-                if (position == 15) { // rv with sglm
+                if (position == 16) { // rv with sglm
                     return 2;
                 }
                 return 0;
@@ -123,7 +124,7 @@ public class InitialPrefetchActivity extends Activity {
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            Log.d("RecyclerView", "bind nested linear" + position);
+            Log.d("RecyclerView", "bind nested linear " + position);
             ((TextView) holder.itemView).setText("Nested: " + position);
         }
 
@@ -148,7 +149,7 @@ public class InitialPrefetchActivity extends Activity {
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            Log.d("RecyclerView", "bind nested staggered" + position);
+            Log.d("RecyclerView", "bind nested staggered " + position);
             ((TextView) holder.itemView).setText("Nested: " + position);
             if (position == 0) {
                 holder.itemView.getLayoutParams().height = 720;
