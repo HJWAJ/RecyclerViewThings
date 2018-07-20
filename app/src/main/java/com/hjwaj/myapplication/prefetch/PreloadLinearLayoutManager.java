@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class PreLoadLinearLayoutManager extends LinearLayoutManager {
+public class PreloadLinearLayoutManager extends LinearLayoutManager {
 
     private OrientationHelper mOrientationHelper;
 
@@ -17,17 +17,17 @@ public class PreLoadLinearLayoutManager extends LinearLayoutManager {
      */
     private int mAdditionalAdjacentPrefetchItemCount = 0;
 
-    public PreLoadLinearLayoutManager(Context context) {
+    public PreloadLinearLayoutManager(Context context) {
         super(context);
         init();
     }
 
-    public PreLoadLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
+    public PreloadLinearLayoutManager(Context context, int orientation, boolean reverseLayout) {
         super(context, orientation, reverseLayout);
         init();
     }
 
-    public PreLoadLinearLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public PreloadLinearLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init();
     }

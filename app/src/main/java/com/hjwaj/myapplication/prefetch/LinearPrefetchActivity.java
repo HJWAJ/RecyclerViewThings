@@ -3,7 +3,6 @@ package com.hjwaj.myapplication.prefetch;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
@@ -15,18 +14,20 @@ import com.hjwaj.myapplication.R;
 
 /**
  * 通过设置setItemPrefetchEnabled、Thread.sleep(DELAY)
- * 开启GPU呈现模式分析，对比观察性能
+ * 可以开启GPU呈现模式分析，对比观察性能
+ *
+ * 另外实现了提前5个item预加载
  */
-public class PrefetchActivity extends Activity {
+public class LinearPrefetchActivity extends Activity {
     private static final int DELAY = 64;
 
     @Override
     public void onCreate(Bundle b) {
         super.onCreate(b);
-        setContentView(R.layout.activity_prefetch);
+        setContentView(R.layout.activity_linear_prefetch);
         RecyclerView rv = findViewById(R.id.rv);
 //        LinearLayoutManager llm = new LinearLayoutManager(this);
-        PreLoadLinearLayoutManager llm = new PreLoadLinearLayoutManager(this);
+        PreloadLinearLayoutManager llm = new PreloadLinearLayoutManager(this);
         llm.setAdjacentPrefetchItemCount(5);
 //        llm.setItemPrefetchEnabled(false);
         rv.setLayoutManager(llm);

@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name=".prefetch.PrefetchActivity"
+            android:name=".prefetch.LinearPrefetchActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="nosensor">
             <intent-filter>
