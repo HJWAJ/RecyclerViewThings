@@ -34,5 +34,20 @@
                     android:scheme="recyclerviewthings" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".prefetch.InitialPrefetchActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="prefetch_nested"
+                    android:scheme="recyclerviewthings" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

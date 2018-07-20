@@ -16,7 +16,14 @@
             android:id="@+id/btn_prefetch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Prefetch"
+            android:text="Prefetch &amp; Preload Data"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/btn_prefetch_nested"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prefetch Nested"
             android:textSize="18sp"/>
     </LinearLayout>
 </ScrollView>

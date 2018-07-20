@@ -24,7 +24,7 @@ public class LinearPrefetchActivity extends Activity {
     @Override
     public void onCreate(Bundle b) {
         super.onCreate(b);
-        setContentView(R.layout.activity_linear_prefetch);
+        setContentView(R.layout.activity_with_simple_recycler_view);
         RecyclerView rv = findViewById(R.id.rv);
 //        LinearLayoutManager llm = new LinearLayoutManager(this);
         PreloadLinearLayoutManager llm = new PreloadLinearLayoutManager(this);
