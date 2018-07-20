@@ -47,9 +47,11 @@ public class PreloadLinearLayoutManager extends LinearLayoutManager {
     public void collectAdjacentPrefetchPositions(int dx, int dy, RecyclerView.State state,
                                                  LayoutPrefetchRegistry layoutPrefetchRegistry) {
         super.collectAdjacentPrefetchPositions(dx, dy, state, layoutPrefetchRegistry);
-
-        // We can not access mLayoutState, so we have to get info by ourselves.
-        // See LinearLayoutManager#updateLayoutState
+        /* We make the simple assumption that the list scrolls down to load more data,
+         * so here we ignore the `mShouldReverseLayout` param.
+         * Additionally, as we can not access mLayoutState, we have to get related info by ourselves.
+         * See LinearLayoutManager#updateLayoutState
+         */
         int delta = (getOrientation() == HORIZONTAL) ? dx : dy;
         if (getChildCount() == 0 || delta == 0) {
             // can't support this scroll, so don't bother prefetching
@@ -59,8 +61,10 @@ public class PreloadLinearLayoutManager extends LinearLayoutManager {
         final View child = getChildClosest(layoutDirection);
         final int currentPosition = getPosition(child) + layoutDirection;
         int scrollingOffset;
-        // Our aim is to pre-load, so we just handle layoutDirection=1 situation.
-        // If we handle layoutDirection=-1 situation, each scroll with slightly toggle directions will cause huge bindings.
+        /* Our aim is to pre-load, so we just handle layoutDirection=1 situation.
+         * If we handle layoutDirection=-1 situation, each scroll with slightly toggle directions
+         * will cause huge numbers of bindings.
+         */
         if (layoutDirection == 1) {
             scrollingOffset = mOrientationHelper.getDecoratedEnd(child)
                     - mOrientationHelper.getEndAfterPadding();
