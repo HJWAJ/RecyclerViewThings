@@ -69,14 +69,6 @@ public class PreLoadLinearLayoutManager extends LinearLayoutManager {
                     layoutPrefetchRegistry.addPosition(i, Math.max(0, scrollingOffset));
                 }
             }
-//        } else {
-//            scrollingOffset = -mOrientationHelper.getDecoratedStart(child)
-//                    + mOrientationHelper.getStartAfterPadding();
-//            for (int i = currentPosition - 1; i > currentPosition - mAdditionalAdjacentPrefetchItemCount - 1; i--) {
-//                if (i >= 0 && i < state.getItemCount()) {
-//                    layoutPrefetchRegistry.addPosition(i, Math.max(0, scrollingOffset));
-//                }
-//            }
         }
     }
 
