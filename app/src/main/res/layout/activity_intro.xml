@@ -25,5 +25,12 @@
             android:layout_height="wrap_content"
             android:text="Prefetch Nested"
             android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/btn_page_snap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PageSnapHelper"
+            android:textSize="18sp"/>
     </LinearLayout>
 </ScrollView>
