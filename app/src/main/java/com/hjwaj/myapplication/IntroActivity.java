@@ -24,10 +24,16 @@ public class IntroActivity extends Activity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://prefetch_nested")));
             }
         });
-        findViewById(R.id.btn_prefetch_nested).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btn_page_snap).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://prefetch_nested")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://pagesnap")));
+            }
+        });
+        findViewById(R.id.btn_linear_snap).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://linearsnap")));
             }
         });
     }

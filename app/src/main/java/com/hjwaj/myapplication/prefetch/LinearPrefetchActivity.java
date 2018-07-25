@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hjwaj.myapplication.R;
+import com.hjwaj.myapplication.VH;
 
 /**
  * 通过设置setItemPrefetchEnabled、Thread.sleep(DELAY)
@@ -96,11 +97,5 @@ public class LinearPrefetchActivity extends Activity {
                 return 0;
             }
         });
-    }
-
-    public class VH extends RecyclerView.ViewHolder {
-        public VH(View itemView) {
-            super(itemView);
-        }
     }
 }

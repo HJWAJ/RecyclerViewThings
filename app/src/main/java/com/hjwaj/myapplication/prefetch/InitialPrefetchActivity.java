@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hjwaj.myapplication.R;
+import com.hjwaj.myapplication.VH;
 
 public class InitialPrefetchActivity extends Activity {
 
@@ -101,12 +102,6 @@ public class InitialPrefetchActivity extends Activity {
                 return 0;
             }
         });
-    }
-
-    public class VH extends RecyclerView.ViewHolder {
-        public VH(View itemView) {
-            super(itemView);
-        }
     }
 
     private class NestedLinearAdapter extends RecyclerView.Adapter {
