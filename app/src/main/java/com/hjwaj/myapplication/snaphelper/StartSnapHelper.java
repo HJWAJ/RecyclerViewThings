@@ -14,12 +14,6 @@ public class StartSnapHelper extends LinearSnapHelper {
     private OrientationHelper mVerticalHelper, mHorizontalHelper;
 
     @Override
-    public void attachToRecyclerView(@Nullable RecyclerView recyclerView)
-            throws IllegalStateException {
-        super.attachToRecyclerView(recyclerView);
-    }
-
-    @Override
     public int[] calculateDistanceToFinalSnap(@NonNull RecyclerView.LayoutManager layoutManager,
                                               @NonNull View targetView) {
         int[] out = new int[2];
