@@ -65,5 +65,6 @@ public class LinearSnapActivity extends Activity {
         });
 //        new LinearSnapHelper().attachToRecyclerView(rv);
         new StartSnapHelper().attachToRecyclerView(rv);
+//        new PagerSnapHelper().attachToRecyclerView(rv);
     }
 }
