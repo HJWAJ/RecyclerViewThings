@@ -85,6 +85,16 @@ public class StartSnapHelper extends LinearSnapHelper {
         return super.findSnapView(layoutManager);
     }
 
+    /* While layoutManagerChanges, orientation helpers should be recreated.
+     * LinearSnapHelper can get layoutManager from orientationHelper as they are in the same package, but we can't.
+     * See LinearSnapHelper#getVerticalHelper, LinearSnapHelper#getHorizontalHelper.
+     * For this reason, we need a reset operation, to reset OrientationHelper's while RecyclerView reset its LayoutManager.
+     */
+    public void resetOrientationHelper() {
+        mVerticalHelper = null;
+        mHorizontalHelper = null;
+    }
+
     private OrientationHelper getVerticalHelper(RecyclerView.LayoutManager layoutManager) {
         if (mVerticalHelper == null) {
             mVerticalHelper = OrientationHelper.createVerticalHelper(layoutManager);
