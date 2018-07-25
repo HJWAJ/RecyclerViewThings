@@ -19,13 +19,15 @@ public class StartSnapHelper extends LinearSnapHelper {
         int[] out = new int[2];
 
         if (layoutManager.canScrollHorizontally()) {
-            out[0] = distanceToStart(targetView, getHorizontalHelper(layoutManager));
+            out[0] = distanceToStart(targetView,
+                    getHorizontalHelper(layoutManager));
         } else {
             out[0] = 0;
         }
 
         if (layoutManager.canScrollVertically()) {
-            out[1] = distanceToStart(targetView, getVerticalHelper(layoutManager));
+            out[1] = distanceToStart(targetView,
+                    getVerticalHelper(layoutManager));
         } else {
             out[1] = 0;
         }
