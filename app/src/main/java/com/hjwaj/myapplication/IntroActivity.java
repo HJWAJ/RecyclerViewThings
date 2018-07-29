@@ -36,5 +36,11 @@ public class IntroActivity extends Activity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://linearsnap")));
             }
         });
+        findViewById(R.id.btn_diff).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://diff")));
+            }
+        });
     }
 }
