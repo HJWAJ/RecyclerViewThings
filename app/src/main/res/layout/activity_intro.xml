@@ -46,5 +46,12 @@
             android:layout_height="wrap_content"
             android:text="DiffUtil"
             android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/btn_partial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Partial Update"
+            android:textSize="18sp"/>
     </LinearLayout>
 </ScrollView>

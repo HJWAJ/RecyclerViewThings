@@ -42,5 +42,11 @@ public class IntroActivity extends Activity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://diff")));
             }
         });
+        findViewById(R.id.btn_partial).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://partial")));
+            }
+        });
     }
 }
