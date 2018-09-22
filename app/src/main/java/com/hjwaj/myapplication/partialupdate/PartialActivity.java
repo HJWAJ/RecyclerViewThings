@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,12 @@ public class PartialActivity extends Activity {
         RecyclerView rv = findViewById(R.id.rv);
         rv.setItemAnimator(null);
         LinearLayoutManager llm = new LinearLayoutManager(this);
+//        llm.setReverseLayout(true);
+//        llm.setStackFromEnd(true);
         rv.setLayoutManager(llm);
         rv.setAdapter(new RecyclerView.Adapter() {
             private String oldStr = "AZYXBCDWEF";
+//            private String oldStr = "AZYXBCDWEFAZYXBCDWEFAZYXBCDWEF";
             private String newStr = "VBCQRSFAEDTU";
 
             private String str = oldStr;
@@ -46,6 +50,7 @@ public class PartialActivity extends Activity {
                 int viewType = getItemViewType(position);
                 switch (viewType) {
                     case 0:
+                        Log.d("rv", "" + str.charAt(position - 1));
                         ((TextView) holder.itemView).setText("" + str.charAt(position - 1));
                         holder.itemView.setBackgroundColor((position & 1) == 0 ? 0xffffffff : 0xffeeeeee);
                         break;
@@ -54,14 +59,15 @@ public class PartialActivity extends Activity {
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                str = newStr;
-                                // 在同一个looper中先设置好数据然后依次partial update不会有问题
+                                // 先remove和move，再更新数据，再insert，是ok的
+                                // move不会走onBindViewHolder
                                 notifyItemRangeRemoved(2, 3);
                                 notifyItemRangeRemoved(5, 1);
                                 notifyItemMoved(2, 1);
                                 notifyItemMoved(3, 2);
                                 notifyItemMoved(6, 3);
                                 notifyItemMoved(6, 5);
+                                str = newStr;
                                 notifyItemInserted(1);
                                 notifyItemRangeInserted(4, 3);
                                 notifyItemRangeInserted(11, 2);

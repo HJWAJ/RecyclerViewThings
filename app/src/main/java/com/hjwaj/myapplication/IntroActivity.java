@@ -48,5 +48,11 @@ public class IntroActivity extends Activity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://partial")));
             }
         });
+        findViewById(R.id.btn_nested_stagger).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://nestedstagger")));
+            }
+        });
     }
 }
