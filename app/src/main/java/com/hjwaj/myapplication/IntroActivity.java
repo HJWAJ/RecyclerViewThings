@@ -12,6 +12,12 @@ public class IntroActivity extends Activity {
     public void onCreate(Bundle b) {
         super.onCreate(b);
         setContentView(R.layout.activity_intro);
+        findViewById(R.id.btn_search_demo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("recyclerviewthings://demo")));
+            }
+        });
         findViewById(R.id.btn_prefetch).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

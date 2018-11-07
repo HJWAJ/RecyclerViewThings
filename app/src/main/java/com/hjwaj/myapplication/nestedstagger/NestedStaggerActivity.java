@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hjwaj.myapplication.R;
 import com.hjwaj.myapplication.VH;
@@ -50,9 +51,15 @@ public class NestedStaggerActivity extends Activity {
 
                 @SuppressLint("SetTextI18n")
                 @Override
-                public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+                public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
                     holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height.get(position)));
                     ((TextView) holder.itemView).setText((height.get(position) / 3) + "");
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(NestedStaggerActivity.this, holder.getAdapterPosition() + "", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
 
                 @Override
@@ -87,6 +94,7 @@ public class NestedStaggerActivity extends Activity {
                         }
                     });
                     nested.setAdapter(mAdapter);
+//                    nested.setLayoutFrozen(true);
                     append();
                     return new VH(nested);
                 }
@@ -101,6 +109,7 @@ public class NestedStaggerActivity extends Activity {
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                mAdapter.notifyItemRangeRemoved(0, mAdapter.getItemCount());
                                 height.clear();
                                 append();
                             }
@@ -135,8 +144,9 @@ public class NestedStaggerActivity extends Activity {
                 for (int i = 0; i < 10; i++) {
                     height.add((100 + random.nextInt(300)) * 3);
                 }
-                mAdapter.notifyDataSetChanged();
+                mAdapter.notifyItemRangeInserted(mAdapter.getItemCount(), 10);
             }
         });
+//        rv.setLayoutFrozen(true);
     }
 }

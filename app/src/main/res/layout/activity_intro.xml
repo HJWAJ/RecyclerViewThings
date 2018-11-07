@@ -13,6 +13,13 @@
         android:scrollbars="vertical">
 
         <Button
+            android:id="@+id/btn_search_demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Demo"
+            android:textSize="18sp"/>
+
+        <Button
             android:id="@+id/btn_prefetch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

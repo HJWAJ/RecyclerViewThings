@@ -8,11 +8,13 @@ import android.support.v4.view.NestedScrollingParent2;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 public class NestedParentRecyclerView extends RecyclerView implements NestedScrollingParent {
 
+    private static final String TAG = NestedParentRecyclerView.class.getSimpleName();
     private View nestedScrollTarget;
     private boolean nestedScrollTargetIsBeingDragged;
     private boolean nestedScrollTargetWasUnableToScroll;
@@ -32,6 +34,7 @@ public class NestedParentRecyclerView extends RecyclerView implements NestedScro
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
+        Log.d(TAG, "dispatchTouchEvent: " + ev.getAction());
         boolean temporarilySkipsInterception = nestedScrollTarget != null;
         if (temporarilySkipsInterception) {
             // If a descendent view is scrolling we set a flag to temporarily skip our onInterceptTouchEvent implementation
@@ -59,16 +62,19 @@ public class NestedParentRecyclerView extends RecyclerView implements NestedScro
     // Skips RecyclerView's onInterceptTouchEvent if requested
     @Override
     public boolean onInterceptTouchEvent(MotionEvent e) {
+        Log.d(TAG, "onInterceptTouchEvent: " + e.getAction());
         return !skipsTouchInterception && super.onInterceptTouchEvent(e);
     }
 
     @Override
     public boolean onStartNestedScroll(@NonNull View child, @NonNull View target, int axes) {
+        Log.d(TAG, "onStartNestedScroll");
         return (axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0;
     }
 
     @Override
     public void onNestedScrollAccepted(@NonNull View child, @NonNull View target, int axes) {
+        Log.d(TAG, "onNestedScrollAccepted");
         if ((axes & ViewCompat.SCROLL_AXIS_VERTICAL) != 0) {
             // A descendent started scrolling, so we'll observe it.
             nestedScrollTarget = target;
@@ -81,6 +87,7 @@ public class NestedParentRecyclerView extends RecyclerView implements NestedScro
 
     @Override
     public void onStopNestedScroll(@NonNull View target) {
+        Log.d(TAG, "onStopNestedScroll");
         // The descendent finished scrolling. Clean up!
         nestedScrollTarget = null;
         nestedScrollTargetIsBeingDragged = false;
@@ -90,6 +97,7 @@ public class NestedParentRecyclerView extends RecyclerView implements NestedScro
 
     @Override
     public void onNestedScroll(@NonNull View target, int dxConsumed, int dyConsumed, int dxUnconsumed, int dyUnconsumed) {
+        Log.d(TAG, "onNestedScroll");
         if (target == nestedScrollTarget && !nestedScrollTargetIsBeingDragged) {
             if (dyConsumed != 0) {
                 // The descendent was actually scrolled, so we won't bother it any longer.
