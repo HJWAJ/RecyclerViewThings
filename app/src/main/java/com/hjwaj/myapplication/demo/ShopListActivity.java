@@ -28,7 +28,7 @@ public class ShopListActivity extends FragmentActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         llm.setItemPrefetchEnabled(false);
         viewPagerRV.setLayoutManager(llm);
-        new PagerSnapHelper().attachToRecyclerView(viewPagerRV);
+//        new PagerSnapHelper().attachToRecyclerView(viewPagerRV);
         final Adapter adapter = new Adapter();
         viewPagerRV.setAdapter(adapter);
 
@@ -39,6 +39,18 @@ public class ShopListActivity extends FragmentActivity {
                         ((LinearLayoutManager) viewPagerRV.getLayoutManager()).findFirstCompletelyVisibleItemPosition());
                 adapter.commitFragment(view, ((LinearLayoutManager) viewPagerRV.getLayoutManager()).findFirstCompletelyVisibleItemPosition(), true);
                 adapter.setPages();
+            }
+        });
+        findViewById(R.id.b3).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPagerRV.smoothScrollToPosition(2);
+            }
+        });
+        findViewById(R.id.b2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewPagerRV.smoothScrollToPosition(1);
             }
         });
     }
@@ -75,7 +87,7 @@ public class ShopListActivity extends FragmentActivity {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             FrameLayout fl = new FrameLayout(parent.getContext());
-            fl.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+            fl.setLayoutParams(new RecyclerView.LayoutParams(1000, ViewGroup.LayoutParams.MATCH_PARENT));
             return new VH(fl);
         }
 
@@ -91,12 +103,12 @@ public class ShopListActivity extends FragmentActivity {
                 ListFragment f;
                 if (tab.tabType == 0) {
                     f = new ShopListFragment();
-                    f.setRecycledViewPool(pool);
                 } else if (tab.tabType == 1) {
                     f = new ContentListFragment();
                 } else {
                     f = new PeopleListFragment();
                 }
+                f.setRecycledViewPool(pool);
                 getSupportFragmentManager().beginTransaction()
                         .replace(view.getId(), f, getFragmentTag(tab, position))
                         .commitAllowingStateLoss();

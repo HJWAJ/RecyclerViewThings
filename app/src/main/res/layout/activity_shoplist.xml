@@ -13,6 +13,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="搜索" />
+
+        <Button
+            android:id="@+id/b3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳到3" />
+
+        <Button
+            android:id="@+id/b2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳到2" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

@@ -31,6 +31,7 @@ public abstract class ListFragment extends Fragment {
 
             @Override
             public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                Log.d("RecyclerView", "create vh");
                 TextView tv = new TextView(parent.getContext());
                 tv.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 360));
                 tv.setTextSize(20);
@@ -41,6 +42,7 @@ public abstract class ListFragment extends Fragment {
 
             @Override
             public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+                Log.d("RecyclerView", "update vh " + position);
                 int viewType = getItemViewType(position);
                 switch (viewType) {
                     case 0:
