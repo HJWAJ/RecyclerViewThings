@@ -63,12 +63,19 @@ public class ShopListActivity extends FragmentActivity {
 
         {
             tabs1.add(new Tab(0, 0));
+            tabs1.add(new Tab(1, 0));
+            tabs1.add(new Tab(2, 0));
+            tabs1.add(new Tab(3, 0));
+            tabs1.add(new Tab(4, 0));
+            tabs1.add(new Tab(5, 0));
             tabs1.add(new Tab(0, 1));
             tabs1.add(new Tab(0, 2));
 
             tabs2.add(new Tab(0, 0));
             tabs2.add(new Tab(1, 0));
             tabs2.add(new Tab(2, 0));
+            tabs2.add(new Tab(3, 0));
+            tabs2.add(new Tab(4, 0));
             tabs2.add(new Tab(0, 1));
             tabs2.add(new Tab(0, 2));
         }
